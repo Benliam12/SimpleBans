@@ -1,0 +1,14 @@
+name: SimpleBans
+version: ${project.version}
+main: me.lory24.simplebans.SimpleBans
+api-version: 1.14
+authors: [LoRy24]
+description: A simple moderation plugin. It contains ban, kick, mute and more commands.
+commands:
+  kick:
+    description: Command for kick a player from the server
+permissions:
+  kick.execute:
+    description: Permission for execute the kick command.
+  punishment.override:
+    description: Permission for override the punishments commands.

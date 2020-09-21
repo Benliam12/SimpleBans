@@ -1,0 +1,74 @@
+#
+#                             _____ _                 _      ____
+#                            / ____(_)               | |    |  _ \
+#                           | (___  _ _ __ ___  _ __ | | ___| |_) | __ _ _ __  ___
+#                            \___ \| | '_ ` _ \| '_ \| |/ _ \  _ < / _` | '_ \/ __|
+#                            ____) | | | | | | | |_) | |  __/ |_) | (_| | | | \__ \
+#                           |_____/|_|_| |_| |_| .__/|_|\___|____/ \__,_|_| |_|___/
+#                                  | |
+#                                  |_|
+#
+# REMEMBER: Don't delete any section / string or the plugin don't will be started!
+Settings:
+  # The general settings for the plugin.
+  General: {}
+  # This section contains all the settings for the messages. All of this messages, contain some special syntax, colors
+  # and more.
+  # The value of this messages is a STRING (You can use the " symbol for define a string text).
+  Messages:
+    # The section for the general messages. For example: The no permission message, the syntax incorrect message and
+    # more.
+    GeneralMessages:
+      # The message that will be send to a player when he execute a command but he doesn't have got the necessary
+      # permission.
+      # Value: String with colors and custom syntax.
+      # Custom syntax:
+      #  {PLAYER} - the executor of the command
+      #  {PERMISSION} - the necessary permission fot execute the command
+      NoPermission: "&c[SimpleBans] You don't have the necessary permission for execute this command!"
+      # The message that will be send to a player when it execute a command with an incorrect syntax.
+      # Value: String with colors and custom syntax.
+      # Custom syntax:
+      #  {USAGE} - the usage of the command
+      SyntaxIncorrect: "&c[SimpleBans] Command syntax incorrect! Usage: {USAGE}"
+      # The message that will be send to a player when he try to execute a punishment command (Ban, Mute, Kick) but
+      # he has got the 'punishment.override' permission.
+      # Value: String with colors and custom syntax.
+      # Custom syntax:
+      #  {ACTION} - the action that the command executor has try to execute to a player.
+      #  {PLAYER} - the target of the punishment command.
+      OverridePlayer: "&c[SimpleBans] You cannot {ACTION} that player!"
+      # The message that will be send to a player when he try to punish another player but it isn't online. (Punishment
+      # example: kick).
+      # Value: String with colors and custom syntax.
+      # Custom syntax:
+      #  {PLAYER} - the target of the punishment command.
+      PlayerNotFound: "&c[SimpleBans] Player not found!"
+    # The section of all the kicks messages. For example: The kick page, the public kick message and the private kick
+    # message.
+    KickMessages:
+      # The message that will be displayed to the kicked player screen.
+      # Value: String with colors, custom syntax and multi-lines.
+      # Custom syntax:
+      #  {REASON} - the reason of the kick
+      #  {MODERATOR} - the kick executor
+      #  {KICKED} - the name of the kicked player
+      KickPageMessage: "&cYou will be kicked from this server!\nReason:&f {REASON}\n&cModerator:&f {MODERATOR}"
+      # The message that will be send to the moderator when he kick a player.
+      # Value: String with colors and custom syntax.
+      # Custom syntax:
+      #  {REASON} - the reason of the kick
+      #  {KICKED} - the name of the kicked player
+      KickMessage: "&c[SimpleBans]&f You've kicked&c {KICKED}&f for&c {REASON}"
+      # The condition that define if you want to sent the broadcast kick message for when a player will be kicked to
+      # all the online players.
+      # Value: Boolean
+      EnablePublicKickMessage: true
+      # The public kick message that will be send to all the online players of the server. Remember: for sent this
+      # message, you need to enable it! For do that, you need to set true at the EnablePublicKickMessage string.
+      # Value: String with colors and custom syntax.
+      # Custom syntax:
+      #  {REASON} - the reason of the kick
+      #  {MODERATOR} - the kick executor
+      #  {KICKED} - the name of the kicked player
+      PublicKickMessage: "&c[SimpleBans]&c {KICKED}&f will be kicked from the server by&c {MODERATOR}&f for&c {REASON}"
