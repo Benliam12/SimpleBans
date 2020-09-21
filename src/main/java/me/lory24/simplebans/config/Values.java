@@ -13,7 +13,7 @@ public class Values extends ConfigTool {
     public Values() {
         this.kickPageMessage = this.printColors(this.getStringFromConfig("Settings.Messages.KickMessages.KickPageMessage"));
         this.kickMessage = this.printColors(this.getStringFromConfig("Settings.Messages.KickMessages.KickMessage"));
-        this.enablePublicKickMessage = this.isBooleanGet(this.getStringFromConfig("Settings.Messages.KickMessages.EnablePublicKickMessage"));
+        this.enablePublicKickMessage = this.isBooleanGet("Settings.Messages.KickMessages.EnablePublicKickMessage");
         this.publicKickMessage = this.printColors(this.getStringFromConfig("Settings.Messages.KickMessages.PublicKickMessage"));
         this.noPermissionMessage = this.printColors(this.getStringFromConfig("Settings.Messages.GeneralMessages.NoPermission"));
         this.syntaxIncorrectMessage = this.printColors(this.getStringFromConfig("Settings.Messages.GeneralMessages.SyntaxIncorrect"));

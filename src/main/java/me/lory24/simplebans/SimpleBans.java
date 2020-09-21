@@ -1,8 +1,10 @@
 package me.lory24.simplebans;
 
 import me.lory24.simplebans.commands.KickExecutor;
-import org.bukkit.Bukkit;
+import me.lory24.simplebans.system.data.PluginDatabase;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.sql.SQLException;
 
 public final class SimpleBans extends JavaPlugin {
     public static SimpleBans instance;
@@ -14,11 +16,17 @@ public final class SimpleBans extends JavaPlugin {
         instance.getCommand("kick").setExecutor(new KickExecutor());
         instance.getCommand("kick").setTabCompleter(new KickExecutor());
 
-        Bukkit.getLogger().info("[SmartBans] Plugin enabled!");
+        PluginDatabase pluginDatabase = new PluginDatabase();
+        pluginDatabase.initConnection();
+
+        this.getLogger().info("Plugin enabled!");
     }
 
     @Override
     public void onDisable() { // Plugin shutdown logic
-        Bukkit.getLogger().info("[SmartBans] Plugin disabled!");
+        try {
+            PluginDatabase.connection.close();
+        } catch (SQLException e) { e.printStackTrace(); }
+        this.getLogger().info("Plugin disabled!");
     }
 }
