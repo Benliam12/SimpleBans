@@ -9,6 +9,8 @@ public class Values extends ConfigTool {
     private final String syntaxIncorrectMessage;
     private final String overridePlayerMessage;
     private final String playerNotFoundMessage;
+    private final String kickActionName;
+    private final String banPageMessage;
 
     public Values() {
         this.kickPageMessage = this.printColors(this.getStringFromConfig("Settings.Messages.KickMessages.KickPageMessage"));
@@ -19,6 +21,8 @@ public class Values extends ConfigTool {
         this.syntaxIncorrectMessage = this.printColors(this.getStringFromConfig("Settings.Messages.GeneralMessages.SyntaxIncorrect"));
         this.overridePlayerMessage = this.printColors(this.getStringFromConfig("Settings.Messages.GeneralMessages.OverridePlayer"));
         this.playerNotFoundMessage = this.printColors(this.getStringFromConfig("Settings.Messages.GeneralMessages.PlayerNotFound"));
+        this.kickActionName = this.getStringFromConfig("Settings.General.ActionsName.KickAction");
+        this.banPageMessage = this.printColors(this.getStringFromConfig("Settings.Messages.BanMessages.BanPageMessage"));
     }
 
     public String getKickPageMessage(String reason, String moderator, String kicked) {
@@ -47,6 +51,15 @@ public class Values extends ConfigTool {
 
     public String getOverridePlayerMessage(String action, String player) {
         return overridePlayerMessage.replace("{ACTION}", action).replace("{PLAYER}", player);
+    }
+
+    public String getBanPageMessage(String reason, String moderator, String banned, String duration) {
+        return banPageMessage.replace("{REASON}", reason).replace("{MODERATOR}", moderator).replace("{BANNED}", banned).
+                replace("{DURATION}", duration);
+    }
+
+    public String getKickActionName() {
+        return kickActionName;
     }
 
     public String getPlayerNotFoundMessage(String player) {

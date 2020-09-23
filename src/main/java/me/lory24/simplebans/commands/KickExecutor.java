@@ -36,7 +36,7 @@ public class KickExecutor implements CommandExecutor, TabCompleter {
         }
 
         if (target.hasPermission("punishment.override")) {
-            sender.sendMessage(values.getOverridePlayerMessage("kick", args[0]));
+            sender.sendMessage(values.getOverridePlayerMessage(values.getKickActionName(), args[0]));
             return true;
         }
 

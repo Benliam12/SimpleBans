@@ -15,6 +15,8 @@ public class PluginDatabase {
     public PluginDatabase() {
         if (!SimpleBans.instance.getDataFolder().exists()) SimpleBans.instance.getDataFolder().mkdir();
         database = new File(SimpleBans.instance.getDataFolder() + File.separator + "data.sqlite");
+        DataManager dataManager = new DataManager(getConnection());
+        dataManager.createBansTable();
     }
 
     public void initConnection() {
@@ -23,10 +25,6 @@ public class PluginDatabase {
             connection = DriverManager.getConnection("jdbc:sqlite:" + database.getAbsolutePath());
             SimpleBans.instance.getLogger().info("Database loaded!");
         } catch (ClassNotFoundException | SQLException e) { e.printStackTrace(); }
-    }
-
-    public static File getDatabase() {
-        return database;
     }
 
     public static Connection getConnection() {

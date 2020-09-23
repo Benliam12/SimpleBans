@@ -11,7 +11,14 @@
 # REMEMBER: Don't delete any section / string or the plugin don't will be started!
 Settings:
   # The general settings for the plugin.
-  General: {}
+  General:
+    # The name of the messages action syntax. All of this name will be used for replace the action wried into the
+    # OverridePlayer message's {ACTION} syntax.
+    ActionsNames:
+      # The name of the kick action. It will be replaced to the {ACTION} syntax when a player try to kick another
+      # player.
+      # Value: String without colors and syntax.
+      KickAction: "kick"
   # This section contains all the settings for the messages. All of this messages, contain some special syntax, colors
   # and more.
   # The value of this messages is a STRING (You can use the " symbol for define a string text).
@@ -53,7 +60,7 @@ Settings:
       #  {REASON} - the reason of the kick
       #  {MODERATOR} - the kick executor
       #  {KICKED} - the name of the kicked player
-      KickPageMessage: "&cYou will be kicked from this server!\nReason:&f {REASON}\n&cModerator:&f {MODERATOR}"
+      KickPageMessage: "&cYou've been kicked from this server!\nReason:&f {REASON}\n&cModerator:&f {MODERATOR}"
       # The message that will be send to the moderator when he kick a player.
       # Value: String with colors and custom syntax.
       # Custom syntax:
@@ -72,3 +79,14 @@ Settings:
       #  {MODERATOR} - the kick executor
       #  {KICKED} - the name of the kicked player
       PublicKickMessage: "&c[SimpleBans]&c {KICKED}&f will be kicked from the server by&c {MODERATOR}&f for&c {REASON}"
+    # The section of all the bans messages. For example: The ban page, the public ban message and the private ban
+    # message.
+    BanMessages:
+      # The message that will be displayed to the banned player screen.
+      # Value: String with colors, custom syntax and multi-lines.
+      # Custom syntax:
+      #  {REASON} - the reason of the ban
+      #  {MODERATOR} - the ban executor
+      #  {BANNED} - the name of the banned player
+      #  {DURATION} - the duration for the ban
+      BanPageMessage: "&cYou've been banned from this server!\nReason:&f {REASON}\n&cModerator:&f {MODERATOR}\n&cDuration:&f {DURATION}"
