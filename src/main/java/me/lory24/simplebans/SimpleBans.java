@@ -3,10 +3,9 @@ package me.lory24.simplebans;
 import me.lory24.simplebans.commands.KickExecutor;
 import me.lory24.simplebans.system.data.PluginDatabase;
 import org.bukkit.plugin.java.JavaPlugin;
-
 import java.sql.SQLException;
 
-public final class SimpleBans extends JavaPlugin {
+public final class SimpleBans extends JavaPlugin{
     public static SimpleBans instance;
 
     @Override
@@ -27,6 +26,10 @@ public final class SimpleBans extends JavaPlugin {
         try {
             PluginDatabase.connection.close();
         } catch (SQLException e) { e.printStackTrace(); }
+        catch(NullPointerException e)
+        {
+            this.getLogger().info("No database connection found!");
+        }
         this.getLogger().info("Plugin disabled!");
     }
 }

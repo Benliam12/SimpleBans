@@ -15,7 +15,13 @@ public class PluginDatabase {
     public PluginDatabase() {
         if (!SimpleBans.instance.getDataFolder().exists()) SimpleBans.instance.getDataFolder().mkdir();
         database = new File(SimpleBans.instance.getDataFolder() + File.separator + "data.sqlite");
-        DataManager dataManager = new DataManager(getConnection());
+
+        Connection connection = getConnection();
+
+        if(connection == null)
+            return;
+
+        DataManager dataManager = new DataManager(connection);
         dataManager.createBansTable();
     }
 
@@ -29,7 +35,9 @@ public class PluginDatabase {
 
     public static Connection getConnection() {
         try {
-            if (!connection.isClosed() || connection != null) return connection;
+            if (connection == null)
+                return null;
+            if (!connection.isClosed()) return connection;
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:" + database.getAbsolutePath());
             return connection;
