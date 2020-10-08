@@ -13,18 +13,24 @@ public class PluginDatabase {
 
     @SuppressWarnings("ResultOfMethodCallIgnored")
     public PluginDatabase() {
-        if (!SimpleBans.instance.getDataFolder().exists()) SimpleBans.instance.getDataFolder().mkdir();
+        if (!SimpleBans.instance.getDataFolder().exists())
+            SimpleBans.instance.getDataFolder().mkdir();
         database = new File(SimpleBans.instance.getDataFolder() + File.separator + "data.sqlite");
 
         Connection connection = getConnection();
 
-        if(connection == null)
+        if(connection == null) //TODO: Looking on a better way to initiate database
             return;
 
         DataManager dataManager = new DataManager(connection);
         dataManager.createBansTable();
     }
 
+    /**
+     * Initiate connection with local database
+     *
+     * TODO: Do a better action than returning exception in case of failed initiation of the database file
+     */
     public void initConnection() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -33,6 +39,10 @@ public class PluginDatabase {
         } catch (ClassNotFoundException | SQLException e) { e.printStackTrace(); }
     }
 
+    /**
+     * Get current connection of data base.
+     * @return null if can't find any active connection
+     */
     public static Connection getConnection() {
         try {
             if (connection == null)

@@ -25,7 +25,12 @@ public final class SimpleBans extends JavaPlugin{
     public void onDisable() { // Plugin shutdown logic
         try {
             PluginDatabase.connection.close();
-        } catch (SQLException e) { e.printStackTrace(); }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        // In case of no active database connection
         catch(NullPointerException e)
         {
             this.getLogger().info("No database connection found!");

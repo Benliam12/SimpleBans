@@ -6,6 +6,10 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Class DataManager
+ * Manages interactions with the SQlite Database
+ */
 public class DataManager extends Sqlite {
     private final Connection connection;
 
@@ -21,6 +25,12 @@ public class DataManager extends Sqlite {
         } catch (SQLException e) { e.printStackTrace(); }
     }
 
+    /**
+     * Bans a player
+     * @param player Player to ban. TODO: Use UUID (user unique id) to store who is getting ban
+     * @param executor Command sender. Who's banning the player
+     * @param reason Reason of ban
+     */
     public void insertPlayerToBansTable(String player, CommandSender executor, String reason) {
         try {
             Statement statement = connection.createStatement();

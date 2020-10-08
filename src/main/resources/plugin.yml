@@ -10,5 +10,7 @@ commands:
 permissions:
   kick.execute:
     description: Permission for execute the kick command.
+    default: op
   punishment.override:
     description: Permission for override the punishments commands.
+    default: op

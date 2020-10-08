@@ -7,6 +7,10 @@ import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
+/**
+ * Class BanManager
+ * Handles ban events
+ */
 public class BanManager {
     private final String player;
 

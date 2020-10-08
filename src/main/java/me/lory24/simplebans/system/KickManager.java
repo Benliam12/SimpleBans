@@ -16,6 +16,9 @@ public class KickManager {
         this.reason = reason;
     }
 
+    /**
+     * Kick player loaded in the KickManager local variables
+     */
     public void kick() {
         Values values = new Values();
         player.kickPlayer(values.getKickPageMessage(reason, executor.getName(), player.getName()));
